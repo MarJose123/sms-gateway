@@ -2,9 +2,9 @@
 
 namespace MarJose123\SmsGateway;
 
+use MarJose123\SmsGateway\Commands\SmsGatewayCommand;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
-use MarJose123\SmsGateway\Commands\SmsGatewayCommand;
 
 class SmsGatewayServiceProvider extends PackageServiceProvider
 {
