@@ -1,12 +1,12 @@
 <?php
 
-namespace VendorName\Skeleton;
+namespace MarJose123\SmsGateway;
 
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
-use VendorName\Skeleton\Commands\SkeletonCommand;
+use MarJose123\SmsGateway\Commands\SmsGatewayCommand;
 
-class SkeletonServiceProvider extends PackageServiceProvider
+class SmsGatewayServiceProvider extends PackageServiceProvider
 {
     public function configurePackage(Package $package): void
     {
@@ -16,10 +16,10 @@ class SkeletonServiceProvider extends PackageServiceProvider
          * More info: https://github.com/spatie/laravel-package-tools
          */
         $package
-            ->name('skeleton')
+            ->name('sms-gateway')
             ->hasConfigFile()
             ->hasViews()
-            ->hasMigration('create_skeleton_table')
-            ->hasCommand(SkeletonCommand::class);
+            ->hasMigration('create_sms-gateway_table')
+            ->hasCommand(SmsGatewayCommand::class);
     }
 }
