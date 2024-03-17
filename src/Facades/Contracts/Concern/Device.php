@@ -23,44 +23,87 @@ class Device implements DeviceInterface
         $this->viewAll = Auth::user()->canSeeAll();
     }
 
-    public function getAllDevices($limit = 100, $offset = 0): array
+    public function getAllDevices($limit = 100, $offset = 0, $resultAsArray = true): array|Devices
     {
-        if($this->viewAll){
-            return Devices::query()
-                ->limit($limit)
-                ->offset($offset)
-                ->get();
-        }
-        return Auth::user()->devices();
+
+        $resp = $this->viewAll ?  Devices::limit($limit)
+            ->offset($offset) : Auth::user()->devices();
+
+        return  $resultAsArray ? $resp->get()->toArray() : $resp;
     }
 
-    public function getDevices()
+    public function getDevices($resultAsArray = true): array|Devices
     {
-        // TODO: Implement getDevices() method.
+        $resp = Auth::user()->devices();
+        return  $resultAsArray ? $resp->get()->toArray() : $resp;
     }
 
-    public function getDevicesById(string $id)
+    public function getDevicesById(string $id, $resultAsArray = true): array|Devices
     {
-        // TODO: Implement getDevicesById() method.
+       $resp = $this->viewAll ?
+           Devices::where('id', $id) :
+           Devices::where([
+           ['id', '=', $id],
+           ['user', '=', Auth::user()->id]
+       ]);
+
+       return  $resultAsArray ? $resp->get()->toArray() : $resp->first();
     }
 
-    public function getDevicesByDevice(string $device)
+    public function searchDevice(string $device, $limit=100, $offset=0): array
     {
-        // TODO: Implement getDevicesByDevice() method.
+        return $this->viewAll ?
+            Devices::query()
+                ->orWhere('name', 'LIKE', "%{$device}%")
+                ->orWhere('model', 'LIKE', "%{$device}%")
+                ->orWhere('brand', 'LIKE', "%{$device}%")
+                ->orWhere('manufacturer', 'LIKE', "%{$device}%")
+                ->get()
+                ->toArray() :
+            Devices::query()
+                ->where('user', '=', Auth::user()->id)
+                ->orWhere('name', 'LIKE', "%{$device}%")
+                ->orWhere('model', 'LIKE', "%{$device}%")
+                ->orWhere('brand', 'LIKE', "%{$device}%")
+                ->orWhere('manufacturer', 'LIKE', "%{$device}%")
+                ->get()
+                ->toArray();
     }
 
     public function deleteDevice(string $device)
     {
-        // TODO: Implement deleteDevice() method.
+       if($this->viewAll){
+           return Devices::find($device)?->delete();
+       }
+       return Devices::query()
+           ->where('user', '=', Auth::user()->id)
+           ->find($device)?->delete();
     }
 
-    public function createDevice(string $device)
+    public function createDevice(Devices $device): bool
     {
-        // TODO: Implement createDevice() method.
+        if($this->viewAll){
+            return $device->save();
+        }
+        $device->user = Auth::user()->id;
+        return $device->save();
     }
 
-    public function updateDevice(string $device)
+    public function updateDevice(Devices $device): bool
     {
-        // TODO: Implement updateDevice() method.
+        if($this->viewAll){
+            return $device->save();
+        }
+        $device->user = Auth::user()->id;
+        return $device->save();
+    }
+
+    public function patchDevice(Devices $device): bool
+    {
+        if($this->viewAll){
+            return $device->save();
+        }
+        $device->user = Auth::user()->id;
+        return $device->save();
     }
 }
