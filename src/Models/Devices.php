@@ -7,7 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Devices extends Model
 {
-
     use HasUuids;
 
     protected $fillable = [
@@ -24,6 +23,6 @@ class Devices extends Model
 
     protected $casts = [
         'id' => 'string',
-        'device_mac' => 'string'
+        'device_mac' => 'string',
     ];
 }

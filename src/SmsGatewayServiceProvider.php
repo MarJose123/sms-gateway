@@ -6,7 +6,6 @@ use Illuminate\Support\Facades\File;
 use Spatie\LaravelPackageTools\Commands\InstallCommand;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
-use MarJose123\SmsGateway\Commands\SmsGatewayCommand;
 
 class SmsGatewayServiceProvider extends PackageServiceProvider
 {
@@ -26,8 +25,7 @@ class SmsGatewayServiceProvider extends PackageServiceProvider
                 $command
                     ->askToRunMigrations()
                     ->askToStarRepoOnGitHub('marjo123/sms-gateway');
-            })
-            ;
+            });
     }
 
     private function migrationFiles(): array
@@ -37,6 +35,7 @@ class SmsGatewayServiceProvider extends PackageServiceProvider
             $_file = pathinfo($file);
             $migrationFiles->push($_file['filename']);
         }
-        return  $migrationFiles->flatten()->toArray();
+
+        return $migrationFiles->flatten()->toArray();
     }
 }

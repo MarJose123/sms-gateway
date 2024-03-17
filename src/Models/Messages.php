@@ -8,8 +8,8 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Messages extends Model
 {
-    use SoftDeletes;
     use HasUuids;
+    use SoftDeletes;
 
     protected $fillable = [
         'message',

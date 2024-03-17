@@ -17,7 +17,6 @@ class Contacts extends Model
 
     protected $casts = [
         'id' => 'string',
-        'device' => 'array'
+        'device' => 'array',
     ];
-
 }
