@@ -70,7 +70,8 @@
     "extra": {
         "laravel": {
             "providers": [
-                "MarJose123\\SmsGateway\\SmsGatewayServiceProvider"
+                "MarJose123\\SmsGateway\\SmsGatewayServiceProvider",
+                "MarJose123\\SmsGateway\\Providers\\RepositoryServiceProvider"
             ],
             "aliases": {
                 "SmsGateway": "MarJose123\\SmsGateway\\Facades\\SmsGateway"
