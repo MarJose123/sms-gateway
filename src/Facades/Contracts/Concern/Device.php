@@ -23,7 +23,7 @@ class Device implements DeviceInterface
         $this->viewAll = Auth::user()->canSeeAll();
     }
 
-    public function getAllDevices($limit = 100, $offset = 0, $resultAsArray = true): array|Devices
+    public function getAllDevices($limit = 100, $offset = 0, bool $resultAsArray = true): array|Devices
     {
 
         $resp = $this->viewAll ?  Devices::limit($limit)
@@ -32,13 +32,13 @@ class Device implements DeviceInterface
         return  $resultAsArray ? $resp->get()->toArray() : $resp;
     }
 
-    public function getDevices($resultAsArray = true): array|Devices
+    public function getDevices(bool $resultAsArray = true): array|Devices
     {
         $resp = Auth::user()->devices();
         return  $resultAsArray ? $resp->get()->toArray() : $resp;
     }
 
-    public function getDevicesById(string $id, $resultAsArray = true): array|Devices
+    public function getDevicesById(string $id, bool $resultAsArray = true): array|Devices
     {
        $resp = $this->viewAll ?
            Devices::where('id', $id) :
@@ -50,7 +50,7 @@ class Device implements DeviceInterface
        return  $resultAsArray ? $resp->get()->toArray() : $resp->first();
     }
 
-    public function searchDevice(string $device, $limit=100, $offset=0): array
+    public function searchDevice(string $device, int $limit=100, int $offset=0): array
     {
         return $this->viewAll ?
             Devices::query()
