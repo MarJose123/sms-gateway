@@ -19,7 +19,8 @@ class SmsGatewayServiceProvider extends PackageServiceProvider
             ->name('sms-gateway')
             ->hasConfigFile()
             ->hasViews()
-            ->hasMigration('create_sms-gateway_table')
-            ->hasCommand(SmsGatewayCommand::class);
+            ->hasMigrations([])
+            ->runsMigrations()
+            ;
     }
 }
