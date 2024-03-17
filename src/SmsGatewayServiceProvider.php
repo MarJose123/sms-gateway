@@ -20,7 +20,7 @@ class SmsGatewayServiceProvider extends PackageServiceProvider
         $package
             ->name('sms-gateway')
             ->hasConfigFile()
-            ->hasViews()
+            ->hasRoute('api')
             ->hasMigrations($this->migrationFiles())
             ->hasInstallCommand(function (InstallCommand $command) {
                 $command
