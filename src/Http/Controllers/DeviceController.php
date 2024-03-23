@@ -4,6 +4,7 @@ namespace MarJose123\SmsGateway\Http\Controllers;
 
 use Illuminate\Http\Request;
 use MarJose123\SmsGateway\Facades\Contracts\Interface\Device as DeviceInterface;
+use MarJose123\SmsGateway\Http\Resources\DeviceCollection;
 
 class DeviceController
 {
@@ -14,9 +15,9 @@ class DeviceController
         $this->device = $device;
     }
 
-    public function index()
+    public function index(): DeviceCollection
     {
-        return $this->device->getAllDevices();
+        return new DeviceCollection($this->device->getAllDevices());
     }
 
     public function store(Request $request)
