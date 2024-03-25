@@ -3,7 +3,6 @@
 namespace MarJose123\SmsGateway;
 
 use Illuminate\Support\Facades\File;
-use MarJose123\SmsGateway\Facades\Contracts\Interface\Device;
 use Spatie\LaravelPackageTools\Commands\InstallCommand;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;

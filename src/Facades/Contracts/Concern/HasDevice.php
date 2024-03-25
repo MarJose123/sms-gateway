@@ -11,16 +11,16 @@ trait HasDevice
         return $this->hasMany(Devices::class, 'user');
     }
 
-    public function canSendSms(): bool{
+    public function canSendSms(): bool
+    {
         return true;
     }
 
     /**
-     * @return bool
      * @description if true, then all the data will be visible to the current logged-in user
      */
-    public function canSeeAll(): bool{
+    public function canSeeAll(): bool
+    {
         return true;
     }
-
 }

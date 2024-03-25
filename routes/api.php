@@ -8,4 +8,4 @@ Route::prefix('sms-gateway')
         Route::apiResources([
             'devices' => DeviceController::class,
         ]);
-});
+    });

@@ -10,7 +10,6 @@ use MarJose123\SmsGateway\Models\Devices;
 
 class DeviceController extends BaseController
 {
-
     public function index(Request $request): DeviceCollection
     {
         $limit = $request->limit ?? $this->limit;
@@ -29,7 +28,7 @@ class DeviceController extends BaseController
     {
         return $this->viewAll ? new DeviceCollection(Devices::findOrFail($id)) : new DeviceCollection(Devices::where([
             ['id', '=', $id],
-            ['user', '=', Auth::user()->id]
+            ['user', '=', Auth::user()->id],
         ]));
     }
 
@@ -41,7 +40,7 @@ class DeviceController extends BaseController
     {
         return $this->viewAll ? new DeviceCollection(Devices::findOrFail($id)->delete()) : new DeviceCollection(Devices::where([
             ['id', '=', $id],
-            ['user', '=', Auth::user()->id]
+            ['user', '=', Auth::user()->id],
         ])->delete());
     }
 }

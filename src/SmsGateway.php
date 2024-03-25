@@ -8,6 +8,6 @@ class SmsGateway
 {
     public function userCanSendSms(): bool
     {
-        return  (Auth::user() instanceof \SmsPorter) ? Auth::user()->canSendSms() : true;
+        return (Auth::user() instanceof Facades\Contracts\SmsPorter) ? Auth::user()->canSendSms() : true;
     }
 }

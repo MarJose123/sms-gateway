@@ -13,8 +13,8 @@ class DeviceCollection extends ResourceCollection
             'data' => $this->collection,
             'meta' => [
                 'count' => $this->count(),
-                'self' => $request->fullUrl()
-            ]
+                'self' => $request->fullUrl(),
+            ],
         ];
     }
 }

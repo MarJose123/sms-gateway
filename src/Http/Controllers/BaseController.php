@@ -24,5 +24,4 @@ class BaseController
 
         $this->viewAll = Auth::user()->canSeeAll();
     }
-
 }
