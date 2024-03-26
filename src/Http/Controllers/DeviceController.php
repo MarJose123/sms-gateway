@@ -38,8 +38,14 @@ class DeviceController extends BaseController
         return response()->json($resp);
     }
 
-    public function update(Request $request, $id)
+    public function update(Request $request, $id): \Illuminate\Http\JsonResponse
     {
+
+    }
+
+    public function patch(Request $request, $id): \Illuminate\Http\JsonResponse
+    {
+
     }
 
     public function destroy($id): \Illuminate\Http\JsonResponse
