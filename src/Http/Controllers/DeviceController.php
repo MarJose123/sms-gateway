@@ -10,37 +10,45 @@ use MarJose123\SmsGateway\Models\Devices;
 
 class DeviceController extends BaseController
 {
-    public function index(Request $request): DeviceCollection
+    public function index(Request $request): \Illuminate\Http\JsonResponse
     {
         $limit = $request->limit ?? $this->limit;
         $offset = $request->offset ?? $this->offset;
 
-        return $this->viewAll ? new DeviceCollection(Devices::limit($limit)
+        $resp = $this->viewAll ? new DeviceCollection(Devices::limit($limit)
             ->offset($offset)) : new DeviceCollection(Auth::user()->devices());
+
+        return response()->json($resp);
     }
 
-    public function store(DeviceStoreRequest $request): DeviceCollection
+    public function store(DeviceStoreRequest $request): \Illuminate\Http\JsonResponse
     {
-        return new DeviceCollection(Devices::create($request->validated()));
+        $resp = new DeviceCollection(Devices::create($request->validated()));
+
+        return response()->json($resp);
     }
 
-    public function show($id): DeviceCollection
+    public function show($id): \Illuminate\Http\JsonResponse
     {
-        return $this->viewAll ? new DeviceCollection(Devices::findOrFail($id)) : new DeviceCollection(Devices::where([
+        $resp = $this->viewAll ? new DeviceCollection(Devices::findOrFail($id)) : new DeviceCollection(Devices::where([
             ['id', '=', $id],
             ['user', '=', Auth::user()->id],
         ]));
+
+        return response()->json($resp);
     }
 
     public function update(Request $request, $id)
     {
     }
 
-    public function destroy($id): DeviceCollection
+    public function destroy($id): \Illuminate\Http\JsonResponse
     {
-        return $this->viewAll ? new DeviceCollection(Devices::findOrFail($id)->delete()) : new DeviceCollection(Devices::where([
+        $resp = $this->viewAll ? new DeviceCollection(Devices::findOrFail($id)->delete()) : new DeviceCollection(Devices::where([
             ['id', '=', $id],
             ['user', '=', Auth::user()->id],
         ])->delete());
+
+        return response()->json($resp);
     }
 }
