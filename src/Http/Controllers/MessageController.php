@@ -11,9 +11,6 @@ use MarJose123\SmsGateway\Models\Messages;
 
 class MessageController extends BaseController
 {
-    /**
-     * @return JsonResponse
-     */
     public function index(): JsonResponse
     {
         $limit = $request->limit ?? $this->limit;
@@ -25,20 +22,13 @@ class MessageController extends BaseController
         return response()->json($resp);
     }
 
-    /**
-     * @param MessageStoreRequest $request
-     * @return JsonResponse
-     */
     public function store(MessageStoreRequest $request): JsonResponse
     {
         $resp = new MessagesCollection(Messages::create($request->validated()));
+
         return response()->json($resp);
     }
 
-    /**
-     * @param $id
-     * @return JsonResponse
-     */
     public function show($id): JsonResponse
     {
         $resp = $this->viewAll ? new MessagesCollection(Messages::findOrFail($id)) : new MessagesCollection(Messages::where([
@@ -49,24 +39,17 @@ class MessageController extends BaseController
         return response()->json($resp);
     }
 
-    /**
-     * @param MessageUpdateRequest $request
-     * @param $id
-     * @return JsonResponse
-     */
     public function update(MessageUpdateRequest $request, $id): JsonResponse
     {
         $resp = new MessagesCollection(Messages::findOrFail($id)->update($request->validated()));
+
         return response()->json($resp);
     }
 
-    /**
-     * @param $id
-     * @return JsonResponse
-     */
     public function destroy($id): JsonResponse
     {
         $resp = new MessagesCollection(Messages::findOrFail($id)->delete());
+
         return response()->json($resp);
     }
 }

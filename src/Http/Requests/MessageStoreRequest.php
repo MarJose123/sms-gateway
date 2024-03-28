@@ -10,9 +10,9 @@ class MessageStoreRequest extends FormRequest
     {
         return [
             'message' => ['required', 'string'],
-            'user' => ['required', 'exists:users,id',],
+            'user' => ['required', 'exists:users,id'],
             'send_to' => ['required', 'array'],
-            'to_device' => ['required', 'exists:devices,id',],
+            'to_device' => ['required', 'exists:devices,id'],
         ];
     }
 }
