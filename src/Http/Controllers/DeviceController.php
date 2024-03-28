@@ -43,12 +43,14 @@ class DeviceController extends BaseController
     public function update(DeviceUpdateRequest $request, $id): \Illuminate\Http\JsonResponse
     {
         $resp = new DeviceCollection(Devices::findOrFail($id)->update($request->validated()));
+
         return response()->json($resp);
     }
 
     public function patch(DevicePatchRequest $request, $id): \Illuminate\Http\JsonResponse
     {
         $resp = new DeviceCollection(Devices::findOrFail($id)->update($request->validated()));
+
         return response()->json($resp);
     }
 
