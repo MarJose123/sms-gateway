@@ -1,6 +1,6 @@
 {
     "name": "marjose123/sms-gateway",
-    "description": "This is my package sms-gateway",
+    "description": "SMS-Gateway: Harness the power of your personal mobile device to send SMS messages seamlessly. This repository provides a straightforward solution for setting up an SMS gateway using your own mobile phone. With easy-to-follow setup instructions and customizable configurations, streamline your SMS communications effortlessly.",
     "keywords": [
         "MarJose123",
         "laravel",
