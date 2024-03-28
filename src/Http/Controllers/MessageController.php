@@ -39,6 +39,12 @@ class MessageController extends BaseController
         return response()->json($resp);
     }
 
+    public function patch($id, MessageUpdateRequest $request): JsonResponse
+    {
+        $resp = new MessagesCollection(Messages::findOrFail($id)->update($request->validated()));
+        return response()->json($resp);
+    }
+
     public function update(MessageUpdateRequest $request, $id): JsonResponse
     {
         $resp = new MessagesCollection(Messages::findOrFail($id)->update($request->validated()));
