@@ -10,6 +10,7 @@ return new class extends Migration
     {
         Schema::create('messages', function (Blueprint $table) {
             $table->uuid('id')->primary();
+            $table->foreignId('user');
             $table->text('message');
             $table->json('send_to')->comment('list of recipients');
             $table->string('to_device');

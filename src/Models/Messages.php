@@ -13,6 +13,7 @@ class Messages extends Model
 
     protected $fillable = [
         'message',
+        'user',
         'send_to',
         'to_device',
         'sent_at',
