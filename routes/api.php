@@ -2,6 +2,7 @@
 
 use MarJose123\SmsGateway\Http\Controllers\DeviceController;
 use MarJose123\SmsGateway\Http\Controllers\MessageController;
+use MarJose123\SmsGateway\Http\Controllers\MessageFailedController;
 
 Route::prefix('v1')
     ->middleware(['auth:sanctum'])
@@ -11,5 +12,6 @@ Route::prefix('v1')
             Route::apiResource('devices', DeviceController::class);
             Route::patch('/message/{id}', [MessageController::class, 'patch']);
             Route::apiResource('messages', MessageController::class);
+            Route::apiResource('messages.failed', MessageFailedController::class);
         });
     });
