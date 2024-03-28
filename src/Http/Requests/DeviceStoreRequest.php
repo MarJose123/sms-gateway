@@ -15,8 +15,8 @@ class DeviceStoreRequest extends FormRequest
             'os' => ['nullable'],
             'os_version' => ['nullable'],
             'brand' => ['nullable'],
-            'device_uid' => ['required', 'unique:device_uid'],
-            'device_mac' => ['nullable', 'unique:device_mac'],
+            'device_uid' => ['required', 'unique:devices,device_uid'],
+            'device_mac' => ['nullable', 'unique:devices,device_mac'],
             'manufacturer' => ['nullable'],
         ];
     }

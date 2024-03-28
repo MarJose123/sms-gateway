@@ -4,7 +4,9 @@ namespace MarJose123\SmsGateway\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use MarJose123\SmsGateway\Http\Requests\DevicePatchRequest;
 use MarJose123\SmsGateway\Http\Requests\DeviceStoreRequest;
+use MarJose123\SmsGateway\Http\Requests\DeviceUpdateRequest;
 use MarJose123\SmsGateway\Http\Resources\DeviceCollection;
 use MarJose123\SmsGateway\Models\Devices;
 
@@ -38,14 +40,16 @@ class DeviceController extends BaseController
         return response()->json($resp);
     }
 
-    public function update(Request $request, $id): \Illuminate\Http\JsonResponse
+    public function update(DeviceUpdateRequest $request, $id): \Illuminate\Http\JsonResponse
     {
-
+        $resp = new DeviceCollection(Devices::findOrFail($id)->update($request->validated()));
+        return response()->json($resp);
     }
 
-    public function patch(Request $request, $id): \Illuminate\Http\JsonResponse
+    public function patch(DevicePatchRequest $request, $id): \Illuminate\Http\JsonResponse
     {
-
+        $resp = new DeviceCollection(Devices::findOrFail($id)->update($request->validated()));
+        return response()->json($resp);
     }
 
     public function destroy($id): \Illuminate\Http\JsonResponse
