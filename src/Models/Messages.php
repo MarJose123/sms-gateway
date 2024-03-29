@@ -31,13 +31,13 @@ class Messages extends Model
 
     public function getStatusAttribute(): string
     {
-        if (!$this->sent_at && !$this->failed_at) {
+        if (! $this->sent_at && ! $this->failed_at) {
             return 'Sending';
         }
-        if ($this->sent_at && !$this->failed_at) {
+        if ($this->sent_at && ! $this->failed_at) {
             return 'Sent';
         }
-        if (!$this->sent_at && $this->failed_at) {
+        if (! $this->sent_at && $this->failed_at) {
             return 'Failed';
         }
     }
