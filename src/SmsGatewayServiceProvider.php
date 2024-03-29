@@ -25,7 +25,7 @@ class SmsGatewayServiceProvider extends PackageServiceProvider
             ->hasInstallCommand(function (InstallCommand $command) {
                 $command
                     ->askToRunMigrations()
-                    ->askToStarRepoOnGitHub('marjo123/sms-gateway');
+                    ->askToStarRepoOnGitHub('marjose123/sms-gateway');
             });
     }
 
