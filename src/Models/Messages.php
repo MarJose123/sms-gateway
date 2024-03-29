@@ -29,6 +29,19 @@ class Messages extends Model
         'failed_at' => 'timestamp',
     ];
 
+    public function getStatusAttribute(): string
+    {
+        if (!$this->sent_at && !$this->failed_at) {
+            return 'Sending';
+        }
+        if ($this->sent_at && !$this->failed_at) {
+            return 'Sent';
+        }
+        if (!$this->sent_at && $this->failed_at) {
+            return 'Failed';
+        }
+    }
+
     public function failedMessages(): HasMany
     {
         return $this->hasMany(FailedMessages::class, 'message');
