@@ -31,7 +31,7 @@ class SmsGatewayServiceProvider extends PackageServiceProvider
     private function migrationFiles(): array
     {
         $migrationFiles = collect();
-        foreach (File::files('../database/migrations') as $file) {
+        foreach (File::files('database/migrations') as $file) {
             $_file = pathinfo($file);
             $migrationFiles->push($_file['filename']);
         }
