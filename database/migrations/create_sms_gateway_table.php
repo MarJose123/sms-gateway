@@ -4,7 +4,8 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration {
+return new class extends Migration
+{
     public function up(): void
     {
         Schema::create('contacts', static function (Blueprint $table) {
@@ -40,7 +41,6 @@ return new class extends Migration {
             $table->timestamps();
         });
 
-
         Schema::create('messages', static function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->foreignId('user');
@@ -53,7 +53,6 @@ return new class extends Migration {
             $table->softDeletes();
             $table->timestamps();
         });
-
 
     }
 
