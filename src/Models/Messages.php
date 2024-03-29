@@ -4,6 +4,7 @@ namespace MarJose123\SmsGateway\Models;
 
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Messages extends Model
@@ -27,4 +28,9 @@ class Messages extends Model
         'sent_at' => 'timestamp',
         'failed_at' => 'timestamp',
     ];
+
+    public function failedMessages(): HasMany
+    {
+        return $this->hasMany(FailedMessages::class, 'message');
+    }
 }

@@ -40,7 +40,6 @@ return new class extends Migration {
             $table->timestamps();
         });
 
-
         Schema::create('messages', static function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->foreignId('user');
@@ -53,7 +52,6 @@ return new class extends Migration {
             $table->softDeletes();
             $table->timestamps();
         });
-
 
     }
 

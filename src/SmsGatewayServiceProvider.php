@@ -28,5 +28,4 @@ class SmsGatewayServiceProvider extends PackageServiceProvider
                     ->askToStarRepoOnGitHub('marjose123/sms-gateway');
             });
     }
-
 }
