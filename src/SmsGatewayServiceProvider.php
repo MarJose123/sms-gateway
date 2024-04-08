@@ -17,7 +17,6 @@ class SmsGatewayServiceProvider extends PackageServiceProvider
          */
         $package
             ->name('sms-gateway')
-            ->hasConfigFile()
             ->hasRoute('api')
             ->hasMigrations([
                 'create_sms_gateway_table',
