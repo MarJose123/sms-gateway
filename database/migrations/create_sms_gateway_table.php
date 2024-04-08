@@ -10,10 +10,12 @@ return new class extends Migration
     {
         Schema::create('contacts', static function (Blueprint $table) {
             $table->uuid('id')->primary();
+            $table->foreignId('user')->index();
             $table->string('name');
             $table->json('device')->nullable()
+                ->index()
                 ->comment('contacts can be visible also to other devices if they are on present on the hardware.');
-            $table->string('phone_number')->unique()->nullable();
+            $table->string('phone_number')->nullable();
             $table->timestamps();
         });
 

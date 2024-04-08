@@ -1,5 +1,6 @@
 <?php
 
+use MarJose123\SmsGateway\Http\Controllers\ContactsController;
 use MarJose123\SmsGateway\Http\Controllers\DeviceController;
 use MarJose123\SmsGateway\Http\Controllers\MessageController;
 use MarJose123\SmsGateway\Http\Controllers\MessageFailedController;
@@ -13,5 +14,6 @@ Route::prefix('sms-gateway')
             Route::patch('/message/{id}', [MessageController::class, 'patch']);
             Route::apiResource('messages', MessageController::class);
             Route::apiResource('messages.failed', MessageFailedController::class);
+            Route::apiResource('contacts', ContactsController::class);
         });
     });
