@@ -2,7 +2,7 @@
 
 namespace MarJose123\SmsGateway\Facades\Contracts;
 
-interface SmsPorter
+interface ISmsPorter
 {
     /**
      * @description if true, then the user can send SMS
